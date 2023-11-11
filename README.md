@@ -21,3 +21,27 @@ impl Cube {
     }
 }
 ```
+
+## Using it
+
+https://crates.io/crates/new-derive
+
+```
+cargo add new-derive
+```
+
+```rust
+use new_derive::New;
+
+#[derive(New, Debug)]
+struct Cube {
+	r: i32,
+	c: i32,
+	z: i32,
+	w: i32,
+}
+
+fn main() {
+	dbg!(Cube::new(1, 2, 3, 4));
+}
+```
