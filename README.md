@@ -33,7 +33,7 @@ cargo add new-derive
 ```rust
 use new_derive::New;
 
-#[derive(New, Debug)]
+#[derive(New)]
 struct Cube {
 	r: i32,
 	c: i32,
@@ -42,6 +42,8 @@ struct Cube {
 }
 
 fn main() {
-	dbg!(Cube::new(1, 2, 3, 4));
+	let cube = Cube::new(1, 2, 3, 4);
+	println!("{}", cube.r * cube.c * cube.z * cube.w);
 }
 ```
+
