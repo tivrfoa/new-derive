@@ -4,6 +4,8 @@ https://github.com/napi-rs/napi-rs/blob/529317b5efe01e49137e8c42c6e90ca351805cce
 
 https://stackoverflow.com/questions/64020061/is-there-a-way-of-removing-quotation-marks-when-using-the-quote-crate
 
+https://www.reddit.com/r/rust/comments/ibbw4v/using_the_quote_crate_how_to_use_the_quote_macro/
+https://www.reddit.com/r/rust/comments/ibbw4v/comment/g1uy8ok/
 */
 use quote::quote;
 use syn::{Data, DeriveInput, Field, Fields, parse_macro_input, Type};
@@ -42,7 +44,6 @@ fn get_fields(parameters: &[(String, String)]) -> String {
 			ret.push_str(", ");
 		}
 		ret.push_str(&mut p.0.clone());
-		// ret.push_str(",\n");
 	}
 	ret
 }
@@ -82,7 +83,6 @@ pub fn derive_new(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
             }
         }
     };
-	dbg!(&expanded.to_string());
 
     // Hand the output tokens back to the compiler.
     proc_macro::TokenStream::from(expanded)
