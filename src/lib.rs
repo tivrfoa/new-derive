@@ -5,7 +5,7 @@ https://github.com/napi-rs/napi-rs/blob/529317b5efe01e49137e8c42c6e90ca351805cce
 https://stackoverflow.com/questions/64020061/is-there-a-way-of-removing-quotation-marks-when-using-the-quote-crate
 
 */
-use quote::{format_ident, quote};
+use quote::quote;
 use syn::{Data, DeriveInput, Field, Fields, parse_macro_input, Type};
 
 fn get_name_type(f: &Field) -> (String, String) {
@@ -69,14 +69,8 @@ pub fn derive_new(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 		_ => todo!()
 	}
 
-	let params = get_parameters(&parameters);
-	let params: syn::Expr = syn::parse_str(&params).map_err(|err| {
-		eprintln!("Invalid token: {params}, err: {err}");
-	}).unwrap();
-	let fields = get_fields(&parameters);
-	let fields: syn::Expr = syn::parse_str(&fields).map_err(|err| {
-		eprintln!("Invalid token: {fields}, err: {err}");
-	}).unwrap();
+	let params: proc_macro2::TokenStream = get_parameters(&parameters).parse().unwrap();
+	let fields: proc_macro2::TokenStream = get_fields(&parameters).parse().unwrap();
 
     let expanded = quote! {
         // The generated impl.
