@@ -1,7 +1,7 @@
 [package]
 name = "new-derive"
-version = "0.1.0"
-categories = ["derive-macro", "macro", "proc"]
+version = "0.1.1"
+categories = ["development-tools::procedural-macro-helpers", "parser-implementations"]
 description = "`New` derive macro"
 edition = "2021"
 homepage = "https://github.com/tivrfoa/new-derive"
