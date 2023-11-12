@@ -10,11 +10,8 @@ impl Struct {
         let tmp: Vec<&str> = input.split_ascii_whitespace().collect();
         let name = tmp[1].into();
         let parameters = Struct::get_inner(&input);
-        
-        Self {
-            name,
-            parameters,
-        }
+
+        Self { name, parameters }
     }
 
     fn get_inner(input: &str) -> String {
@@ -22,7 +19,7 @@ impl Struct {
         let r = {
             let mut r = 0;
             for i in (0..input.len()).rev() {
-                if &input[i..i+1] == "}" {
+                if &input[i..i + 1] == "}" {
                     r = i;
                     break;
                 }
@@ -35,7 +32,9 @@ impl Struct {
     fn get_fields(&self) -> String {
         let mut ret = String::new();
         let tmp: Vec<&str> = self.parameters.split(':').collect();
-        if tmp.is_empty() { return "".into(); }
+        if tmp.is_empty() {
+            return "".into();
+        }
         ret.push_str(tmp[0]);
         for i in 1..tmp.len() - 1 {
             ret.push_str(", ");

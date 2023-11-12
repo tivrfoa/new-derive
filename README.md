@@ -49,35 +49,35 @@ struct Cube {
 
 #[derive(Debug, New)]
 struct V {
-	b: Vec<String>,
+    b: Vec<String>,
 }
 
 #[derive(Debug, New)]
 struct B {
-	b: Box<String>
+    b: Box<String>,
 }
 
 #[derive(Debug, New)]
 struct S1 {
-	array1: [i32; 3],
-	name: String,
+    array1: [i32; 3],
+    name: String,
 }
 
 #[derive(Debug, New)]
 struct S2 {
-	opt1: Option<String>,
-	idx: usize,
+    opt1: Option<String>,
+    idx: usize,
 }
 
 fn main() {
     let cube = Cube::new(1, 2, 3, 4);
     println!("{}", cube.r * cube.c * cube.z * cube.w);
 
-	let s1 = S1::new([1, 2, 3], "Leandro".into());
-	dbg!(s1);
+    let s1 = S1::new([1, 2, 3], "Leandro".into());
+    dbg!(s1);
 
-	let s2 = S2::new(Some("ola".into()), 30);
-	dbg!(s2);
+    let s2 = S2::new(Some("ola".into()), 30);
+    dbg!(s2);
 }
 ```
 
