@@ -33,7 +33,8 @@ And it's funny that it has the same name, but swapped:
 [derive-new](https://github.com/nrc/derive-new/tree/master)
 
 It's more powerful than this one, because it handles default values, enums
-and `PhantomData`.
+and `PhantomData`.<br>
+**Although** this crate creates a `const` fn, while `derive-new` doesn't.
 
 ## Using it
 
@@ -44,7 +45,7 @@ cargo add new-derive
 ```
 
 ```rust
-use new_derive::New;
+`use new_derive::New;
 
 #[derive(New)]
 struct Cube {
@@ -77,6 +78,11 @@ struct S2 {
     map1: std::collections::HashMap<i32, i32>,
 }
 
+#[derive(Debug, New)]
+struct Life1<'a> {
+    name: &'a str,
+}
+
 fn main() {
     let cube = Cube::new(1, 2, 3, 4);
     println!("{}", cube.r * cube.c * cube.z * cube.w);
@@ -87,6 +93,10 @@ fn main() {
     let map1 = std::collections::HashMap::from([(10, 20)]);
     let s2 = S2::new(Some("ola".into()), 30, map1);
     dbg!(s2);
+
+    let country = "Brazil";
+    let lifetime_test = Life1::new(country);
+    println!("Country is: {}", lifetime_test.name);
 }
 ```
 
@@ -94,7 +104,7 @@ Output:
 
 ```
 24
-[src/main.rs:39] s1 = S1 {
+[src/main.rs:44] s1 = S1 {
     array1: [
         1,
         2,
@@ -102,7 +112,7 @@ Output:
     ],
     name: "Leandro",
 }
-[src/main.rs:43] s2 = S2 {
+[src/main.rs:48] s2 = S2 {
     opt1: Some(
         "ola",
     ),
@@ -111,4 +121,6 @@ Output:
         10: 20,
     },
 }
+Country is: Brazil
 ```
+

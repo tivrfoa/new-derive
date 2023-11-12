@@ -80,7 +80,7 @@ pub fn derive_new(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let expanded = quote! {
         // The generated impl.
         impl #generic #name #generic {
-            fn new(#params) -> Self {
+            const fn new(#params) -> Self {
                 Self {
                     #fields
                 }
