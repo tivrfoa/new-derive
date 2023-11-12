@@ -8,20 +8,27 @@ fn get_name_type(f: &Field) -> (String, String) {
             for p in &path.segments {
                 println!("{}", p.ident.to_string());
                 match &p.arguments {
-                    syn::PathArguments::None => todo!(),
+                    syn::PathArguments::None => {
+						println!("No args. Nothing to worry about?! =)");
+					}
                     syn::PathArguments::AngleBracketed(args) => {
                         for arg in &args.args {
+                            dbg!(arg);
                             match arg {
                                 syn::GenericArgument::Lifetime(_) => todo!(),
                                 syn::GenericArgument::Type(t) => {
                                     // println!("generic arg type is {}", t.);
                                     todo!("handle generic argument");
                                 }
-                                syn::GenericArgument::Const(_) => todo!(),
+                                syn::GenericArgument::Const(_) => {
+									println!("TODO handle Const?");
+								}
                                 syn::GenericArgument::AssocType(_) => todo!(),
                                 syn::GenericArgument::AssocConst(_) => todo!(),
                                 syn::GenericArgument::Constraint(_) => todo!(),
-                                _ => todo!(),
+                                _ => {
+									println!("TODO handle arg _");
+								}
                             }
                         }
                     }
@@ -39,7 +46,7 @@ fn get_name_type(f: &Field) -> (String, String) {
 		Type::Array(_) => {
 			todo!("TODO handle Array");
 		}
-        _ => todo!(),
+        _ => todo!("which type?!"),
     }
     todo!()
 }
