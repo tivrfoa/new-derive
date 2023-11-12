@@ -28,7 +28,8 @@ fn get_name_type(f: &Field) -> (String, String) {
                     syn::PathArguments::Parenthesized(_) => todo!(),
                 }
             }
-            if let Some(syn::PathSegment { ident, .. }) = path.segments.last() {
+            if let Some(syn::PathSegment { ident, arguments }) = path.segments.last() {
+                // let (a, b, c) = arguments
                 return (param_name, ident.to_string());
             }
         }

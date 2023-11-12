@@ -22,6 +22,14 @@ impl Cube {
 }
 ```
 
+It only works for basic types for now, see issues.
+
+ps: Rust Analyzer already generates `new` function for you!
+
+![Generate new](imgs/rust-analyzer-new-function.png)
+
+https://rust-analyzer.github.io/manual.html#assists-code-actions
+
 ## Using it
 
 https://crates.io/crates/new-derive

@@ -7,3 +7,6 @@ https://www.reddit.com/r/rust/comments/ibbw4v/using_the_quote_crate_how_to_use_t
 https://www.reddit.com/r/rust/comments/ibbw4v/comment/g1uy8ok/
 
 https://users.rust-lang.org/t/generic-parameter-of-syn-type/42746
+
+https://github.com/servo/servo/blob/1915032f66a83c25b1134264c08cd1d500cc8271/components/jstraceable_derive/lib.rs#L168
+
