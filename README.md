@@ -28,6 +28,13 @@ ps: Rust Analyzer already generates `new` function for you!
 
 https://rust-analyzer.github.io/manual.html#assists-code-actions
 
+ps2: I just found (2023-11-12) another crate that already does that! =)
+And it's funny that it has the same name, but swapped:
+[derive-new](https://github.com/nrc/derive-new/tree/master)
+
+It's more powerful than this one, because it handles default values, generic
+struct, enums and `PhantomData`.
+
 ## Using it
 
 https://crates.io/crates/new-derive
