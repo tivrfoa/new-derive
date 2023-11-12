@@ -1,4 +1,4 @@
-This derive macro creates a `new` associated function receiving as parameters the same fields declared in your `struct`.
+This derive macro creates a `const fn new` associated function receiving as parameters the same fields declared in your `struct`.
 
 So this:
 
@@ -16,7 +16,7 @@ struct Cube {
 
 ```rust
 impl Cube {
-    fn new(r: i32, c: i32, z: i32, w: i32) -> Self {
+    const fn new(r: i32, c: i32, z: i32, w: i32) -> Self {
         Self { r, c, z, w }
     }
 }
