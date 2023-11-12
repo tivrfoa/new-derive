@@ -10,3 +10,6 @@ https://users.rust-lang.org/t/generic-parameter-of-syn-type/42746
 
 https://github.com/servo/servo/blob/1915032f66a83c25b1134264c08cd1d500cc8271/components/jstraceable_derive/lib.rs#L168
 
+https://stackoverflow.com/questions/72061482/use-rust-proc-macros-to-generate-dynamically-named-struct-instance-methods
+
+https://stackoverflow.com/a/72062377/339561
