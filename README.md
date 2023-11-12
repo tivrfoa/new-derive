@@ -67,6 +67,7 @@ struct S1 {
 struct S2 {
     opt1: Option<String>,
     idx: usize,
+    map1: std::collections::HashMap<i32, i32>,
 }
 
 fn main() {
@@ -76,7 +77,8 @@ fn main() {
     let s1 = S1::new([1, 2, 3], "Leandro".into());
     dbg!(s1);
 
-    let s2 = S2::new(Some("ola".into()), 30);
+    let map1 = std::collections::HashMap::from([(10, 20)]);
+    let s2 = S2::new(Some("ola".into()), 30, map1);
     dbg!(s2);
 }
 ```
@@ -85,7 +87,7 @@ Output:
 
 ```
 24
-[src/main.rs:38] s1 = S1 {
+[src/main.rs:39] s1 = S1 {
     array1: [
         1,
         2,
@@ -93,10 +95,13 @@ Output:
     ],
     name: "Leandro",
 }
-[src/main.rs:41] s2 = S2 {
+[src/main.rs:43] s2 = S2 {
     opt1: Some(
         "ola",
     ),
     idx: 30,
+    map1: {
+        10: 20,
+    },
 }
 ```
