@@ -32,8 +32,8 @@ ps2: I just found (2023-11-12) another crate that already does that! =)
 And it's funny that it has the same name, but swapped:
 [derive-new](https://github.com/nrc/derive-new/tree/master)
 
-It's more powerful than this one, because it handles default values, generic
-struct, enums and `PhantomData`.
+It's more powerful than this one, because it handles default values, enums
+and `PhantomData`.
 
 ## Using it
 

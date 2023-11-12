@@ -3,6 +3,7 @@ use quote::quote;
 struct Struct {
     name: String,
     parameters: String,
+    generic: String,
 }
 
 impl Struct {
@@ -10,8 +11,25 @@ impl Struct {
         let tmp: Vec<&str> = input.split_ascii_whitespace().collect();
         let name = tmp[1].into();
         let parameters = Struct::get_inner(&input);
+        let generic = Struct::get_generic(&tmp);
 
-        Self { name, parameters }
+        Self {
+            name,
+            parameters,
+            generic,
+        }
+    }
+
+    fn get_generic(tokens: &[&str]) -> String {
+        let mut generic: String = "".into();
+        for i in 2..tokens.len() {
+            if tokens[i] == "{" {
+                break;
+            }
+            generic.push_str(tokens[i]);
+        }
+
+        generic
     }
 
     fn get_inner(input: &str) -> String {
@@ -57,10 +75,11 @@ pub fn derive_new(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let name: proc_macro2::TokenStream = s.name.parse().unwrap();
     let params: proc_macro2::TokenStream = s.parameters.parse().unwrap();
     let fields: proc_macro2::TokenStream = s.get_fields().parse().unwrap();
+    let generic: proc_macro2::TokenStream = s.generic.parse().unwrap();
 
     let expanded = quote! {
         // The generated impl.
-        impl #name {
+        impl #generic #name #generic {
             fn new(#params) -> Self {
                 Self {
                     #fields
