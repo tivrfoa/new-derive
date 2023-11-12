@@ -1,6 +1,6 @@
 [package]
 name = "new-derive"
-version = "0.2.0"
+version = "0.2.1"
 categories = ["development-tools::procedural-macro-helpers", "parser-implementations"]
 description = "`New` derive macro"
 edition = "2021"
