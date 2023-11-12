@@ -5,10 +5,39 @@ fn get_name_type(f: &Field) -> (String, String) {
     let param_name = f.ident.as_ref().unwrap().to_string();
     match &f.ty {
         Type::Path(syn::TypePath { qself: None, path }) => {
+            for p in &path.segments {
+                println!("{}", p.ident.to_string());
+                match &p.arguments {
+                    syn::PathArguments::None => todo!(),
+                    syn::PathArguments::AngleBracketed(args) => {
+                        for arg in &args.args {
+                            match arg {
+                                syn::GenericArgument::Lifetime(_) => todo!(),
+                                syn::GenericArgument::Type(t) => {
+                                    // println!("generic arg type is {}", t.);
+                                    todo!("handle generic argument");
+                                }
+                                syn::GenericArgument::Const(_) => todo!(),
+                                syn::GenericArgument::AssocType(_) => todo!(),
+                                syn::GenericArgument::AssocConst(_) => todo!(),
+                                syn::GenericArgument::Constraint(_) => todo!(),
+                                _ => todo!(),
+                            }
+                        }
+                    }
+                    syn::PathArguments::Parenthesized(_) => todo!(),
+                }
+            }
             if let Some(syn::PathSegment { ident, .. }) = path.segments.last() {
                 return (param_name, ident.to_string());
             }
         }
+        Type::Path(syn::TypePath { qself, path }) => {
+			println!("qself is some");
+        }
+		Type::Array(_) => {
+			todo!("TODO handle Array");
+		}
         _ => todo!(),
     }
     todo!()
@@ -57,6 +86,7 @@ pub fn derive_new(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
         },
         _ => todo!(),
     }
+	dbg!(&parameters);
 
     let params: proc_macro2::TokenStream = get_parameters(&parameters).parse().unwrap();
     let fields: proc_macro2::TokenStream = get_fields(&parameters).parse().unwrap();

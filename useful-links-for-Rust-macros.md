@@ -5,3 +5,5 @@ https://stackoverflow.com/questions/64020061/is-there-a-way-of-removing-quotatio
 https://www.reddit.com/r/rust/comments/ibbw4v/using_the_quote_crate_how_to_use_the_quote_macro/
 
 https://www.reddit.com/r/rust/comments/ibbw4v/comment/g1uy8ok/
+
+https://users.rust-lang.org/t/generic-parameter-of-syn-type/42746
