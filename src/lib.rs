@@ -29,6 +29,11 @@ impl Struct {
         input[l..r].into()
     }
 
+	// FIXME this way it's implemented does not work if ':'
+	// is used in the type declaration, eg: std::collections::HashMap, ...
+	// The proper way of doing that is to get each ',' position after a ':'
+	// but it must handle cases like: map1: HashMap<i32, i32>, where the
+	// second ',' is what we are looking for
     fn get_fields(&self) -> String {
         let mut ret = String::new();
         let tmp: Vec<&str> = self.parameters.split(':').collect();
